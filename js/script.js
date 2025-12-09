@@ -3,7 +3,17 @@
 */
 
 document.addEventListener('componentsLoaded', () => {
+  // 0. MATIKAN PRELOADER (Kasih jeda dikit biar smooth)
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('hide');
+    }, 1000); // Jeda 1 detik biar logo Dreamville-nya kelihatan dulu
+  }
+
   console.log('Website Ready! Menjalankan Logic...');
+
+  // ... sisa kodingan logic lu ...
 
   // ==========================================
   // 1. NAVBAR SCROLL & HAMBURGER

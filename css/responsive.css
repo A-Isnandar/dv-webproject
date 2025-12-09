@@ -1,17 +1,126 @@
 @media (max-width: 768px) {
-  .hero-title { font-size: 2.5rem; }
-  .hamburger { display: block; }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hamburger {
+    display: block;
+  }
 
   .nav-menu {
-    position: fixed; left: -100%; top: 70px;
-    flex-direction: column; background-color: var(--primary-dark);
-    width: 100%; height: 100vh; text-align: center;
-    transition: 0.3s; padding-top: 40px;
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background-color: var(--primary-dark);
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    padding-top: 40px;
   }
-  .nav-menu.active { left: 0; }
-  .dropdown-content { position: static; background: #222; box-shadow: none; }
-  .dropdown-content a { color: #ccc; }
+  .nav-menu.active {
+    left: 0;
+  }
+  .dropdown-content {
+    position: static;
+    background: #222;
+    box-shadow: none;
+  }
+  .dropdown-content a {
+    color: #ccc;
+  }
 
-  .about-layout, .grid-2-2, .policy-grid { grid-template-columns: 1fr; }
-  .menu-buttons .btn { margin-bottom: 10px; }
+  .about-layout,
+  .grid-2-2,
+  .policy-grid {
+    grid-template-columns: 1fr;
+  }
+  .menu-buttons .btn {
+    margin-bottom: 10px;
+  }
+}
+/* FIX KHUSUS BACKGROUND IMAGE DI IPHONE/MOBILE */
+@media (max-width: 1024px) {
+  /* Target Hero Section & Reservation Section */
+  .hero,
+  .parallax-bg {
+    /* Ubah dari fixed jadi scroll */
+    background-attachment: scroll !important;
+
+    /* Pastikan posisi dan ukuran tetap rapi */
+    background-position: center center !important;
+    background-size: cover !important;
+  }
+}
+/* --- MOBILE OPTIMIZATION (Put at the bottom of responsive.css) --- */
+
+@media (max-width: 768px) {
+  /* 1. KECILKAN FONT ROOT */
+  /* Ini trik jitu: Mengecilkan base font size akan otomatis 
+     mengecilkan semua elemen yang pakai satuan 'rem' */
+  html {
+    font-size: 14px; /* Default desktop biasanya 16px */
+  }
+
+  /* 2. RAPATKAN JARAK ANTAR SECTION */
+  .section {
+    padding: 60px 0; /* Desktop 100px -> Mobile 60px */
+  }
+
+  .section-header {
+    margin-bottom: 40px; /* Kurangi jarak judul ke konten */
+  }
+
+  /* 3. HERO SECTION (Biar gak makan layar) */
+  .hero-title {
+    font-size: 2.8rem; /* Desktop 4rem -> Turunin drastis */
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    letter-spacing: 1px; /* Kurangi spacing biar gak pecah baris */
+  }
+
+  /* 4. JUDUL SECTION (Signature Selection, etc) */
+  .section-header h2 {
+    font-size: 2rem; /* Desktop 2.5rem */
+  }
+
+  .eyebrow {
+    font-size: 0.9rem; /* Biar gak balapan sama judul utama */
+  }
+
+  /* 5. FOOTER (Ini yang lu bilang kegedean) */
+  .footer {
+    padding: 40px 0 20px; /* Pangkas padding atas-bawah setengahnya */
+  }
+
+  .footer-brand h2 {
+    font-size: 1.8rem; /* Kecilin logo text */
+  }
+
+  .footer-brand p {
+    font-size: 0.8rem;
+    margin-bottom: 20px; /* Rapatkan jarak ke kontak */
+  }
+
+  .footer-social {
+    margin: 20px 0; /* Rapatkan jarak icon sosmed */
+  }
+
+  .footer-contact .map-link {
+    font-size: 0.9rem; /* Kecilin teks alamat */
+  }
+
+  /* 6. MODAL POPUP (Biar gak menuhi layar HP) */
+  .modal-content {
+    width: 95%; /* Lebarkan dikit biar muat konten */
+    padding: 20px; /* Kurangi padding dalam */
+    max-height: 70vh; /* Batasi tinggi maksimal */
+  }
+
+  .modal-content h2 {
+    font-size: 1.5rem; /* Kecilin judul modal */
+  }
 }
