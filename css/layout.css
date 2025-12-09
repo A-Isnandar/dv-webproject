@@ -1,0 +1,168 @@
+/* Container & Section */
+.section {
+  padding: 100px 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: var(--transition);
+}
+/* ... kode nav.scrolled yang lama ... */
+nav.scrolled {
+  background: rgba(26, 26, 26, 0.95);
+  padding: 15px 0;
+  backdrop-filter: blur(10px);
+}
+
+/* [TAMBAHAN BARU] 
+   Memaksa navbar jadi gelap saat menu mobile dibuka, 
+   meskipun belum discroll */
+nav.mobile-open {
+  background-color: var(--primary-dark);
+  padding: 20px 0; /* Pertahankan padding biar gak loncat */
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--text-light);
+  font-weight: 700;
+}
+.logo span {
+  color: var(--gold);
+}
+.nav-menu {
+  display: flex;
+  gap: 30px;
+}
+.nav-link {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--gold);
+  transition: var(--transition);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 10px 0;
+}
+.dropdown-content a {
+  color: var(--text-dark);
+  padding: 10px 20px;
+  display: block;
+  font-size: 0.9rem;
+}
+.dropdown-content a:hover {
+  background-color: var(--sand);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  padding: 80px 0 30px;
+  text-align: center;
+}
+.footer-brand h2 {
+  color: var(--text-light);
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+.footer-brand p {
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+.footer-contact p {
+  color: #999;
+  margin-bottom: 5px;
+}
+.footer-contact .map-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #999;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.footer-contact .map-link i {
+  color: #d4af37;
+  font-size: 1.2rem;
+}
+.footer-contact .map-link:hover {
+  color: #fff;
+  transform: translateY(-3px);
+}
+.footer-social {
+  margin: 30px 0;
+}
+.footer-social a {
+  color: #fff;
+  margin: 0 15px;
+  font-size: 1.2rem;
+}
+.footer-social a:hover {
+  color: var(--gold);
+}
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  font-size: 0.8rem;
+  color: #555;
+}

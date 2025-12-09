@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.5rem; }
+  .hamburger { display: block; }
+
+  .nav-menu {
+    position: fixed; left: -100%; top: 70px;
+    flex-direction: column; background-color: var(--primary-dark);
+    width: 100%; height: 100vh; text-align: center;
+    transition: 0.3s; padding-top: 40px;
+  }
+  .nav-menu.active { left: 0; }
+  .dropdown-content { position: static; background: #222; box-shadow: none; }
+  .dropdown-content a { color: #ccc; }
+
+  .about-layout, .grid-2-2, .policy-grid { grid-template-columns: 1fr; }
+  .menu-buttons .btn { margin-bottom: 10px; }
+}

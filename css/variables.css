@@ -1,0 +1,67 @@
+:root {
+  --primary-dark: #1a1a1a;
+  --primary-light: #f4f4f4;
+  --gold: #d4af37;
+  --sand: #e6dec3;
+  --text-dark: #222222;
+  --text-light: #ffffff;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --transition: all 0.4s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--primary-light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Typography Umum */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--primary-dark);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.3rem;
+  color: var(--gold);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-header h2 {
+  font-size: 2.3rem;
+  margin-bottom: 15px;
+}
+.line {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto;
+}
