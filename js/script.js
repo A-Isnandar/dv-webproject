@@ -1,19 +1,7 @@
-/* LOGIC UTAMA WEBSITE
-   Dijalankan setelah semua komponen HTML (Navbar, Hero, dll) selesai dimuat oleh loader.js
-*/
+/* LOGIC UTAMA WEBSITE (UPDATED FIX MOBILE MENU) */
 
 document.addEventListener('componentsLoaded', () => {
-  // 0. MATIKAN PRELOADER (Kasih jeda dikit biar smooth)
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    setTimeout(() => {
-      preloader.classList.add('hide');
-    }, 1000); // Jeda 1 detik biar logo Dreamville-nya kelihatan dulu
-  }
-
   console.log('Website Ready! Menjalankan Logic...');
-
-  // ... sisa kodingan logic lu ...
 
   // ==========================================
   // 1. NAVBAR SCROLL & HAMBURGER
@@ -21,7 +9,9 @@ document.addEventListener('componentsLoaded', () => {
   const navbar = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
+
+  // [UPDATE] Ganti selector biar kena semua link termasuk dropdown
+  const allMenuLinks = document.querySelectorAll('.nav-menu a');
 
   // Scroll Effect
   window.addEventListener('scroll', () => {
@@ -35,13 +25,9 @@ document.addEventListener('componentsLoaded', () => {
   // Mobile Menu Toggle
   if (hamburger) {
     hamburger.addEventListener('click', () => {
-      // 1. Toggle menu child
       navMenu.classList.toggle('active');
+      navbar.classList.toggle('mobile-open'); // Toggle background gelap
 
-      // 2. [TAMBAHAN BARU] Toggle background navbar induk
-      navbar.classList.toggle('mobile-open');
-
-      // 3. Ganti icon hamburger/silang
       const icon = hamburger.querySelector('i');
       if (navMenu.classList.contains('active')) {
         icon.classList.remove('fa-bars');
@@ -53,26 +39,14 @@ document.addEventListener('componentsLoaded', () => {
     });
   }
 
-  // Close menu when clicking link
-  navLinks.forEach((link) => {
+  // [UPDATE] Logic Tutup Menu untuk SEMUA Link (Termasuk Dropdown)
+  allMenuLinks.forEach((link) => {
     link.addEventListener('click', () => {
+      // Tutup Menu
       if (navMenu) navMenu.classList.remove('active');
-
-      // [TAMBAHAN BARU] Hapus background navbar saat link diklik
       if (navbar) navbar.classList.remove('mobile-open');
 
-      if (hamburger) {
-        const icon = hamburger.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
-  });
-
-  // Close menu when clicking link
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (navMenu) navMenu.classList.remove('active');
+      // Reset Icon Hamburger
       if (hamburger) {
         const icon = hamburger.querySelector('i');
         icon.classList.remove('fa-times');
@@ -102,46 +76,39 @@ document.addEventListener('componentsLoaded', () => {
   // ==========================================
   // 3. MENU TABS (DAY / NIGHT)
   // ==========================================
-  // Kita tempel fungsi ini ke 'window' biar bisa dipanggil HTML onclick=""
   window.openMenu = function (evt, menuName) {
     let i, menuContent, tabBtn;
 
-    // Sembunyikan semua konten
     menuContent = document.getElementsByClassName('menu-content');
     for (i = 0; i < menuContent.length; i++) {
       menuContent[i].style.display = 'none';
       menuContent[i].classList.remove('active');
     }
 
-    // Matikan semua tombol active
     tabBtn = document.getElementsByClassName('tab-btn');
     for (i = 0; i < tabBtn.length; i++) {
       tabBtn[i].className = tabBtn[i].className.replace(' active', '');
     }
 
-    // Nyalakan yang dipilih
     const selectedMenu = document.getElementById(menuName);
     if (selectedMenu) {
       selectedMenu.style.display = 'block';
       selectedMenu.classList.add('active');
     }
 
-    // Cek jika evt valid (kadang dipanggil manual tanpa event klik)
     if (evt && evt.currentTarget) {
       evt.currentTarget.className += ' active';
     }
   };
 
   // ==========================================
-  // 4. MODAL POPUP LOGIC (FIXED)
+  // 4. MODAL POPUP LOGIC
   // ==========================================
   const modalOverlay = document.getElementById('modal-overlay');
   const modalTitle = document.getElementById('modal-title');
   const modalBody = document.getElementById('modal-body');
   const closeModal = document.querySelector('.close-modal');
 
-  // PENTING: Kita pasang fungsi ini ke object 'window'
-  // Supaya tombol HTML onclick="openModal(...)" bisa menemukannya
   window.openModal = function (title, contentId) {
     const contentDiv = document.getElementById(contentId);
 
@@ -154,17 +121,23 @@ document.addEventListener('componentsLoaded', () => {
     }
   };
 
-  // Event Listener Tutup Modal
   if (closeModal) {
     closeModal.addEventListener('click', () => {
       modalOverlay.classList.remove('active');
     });
   }
 
-  // Tutup kalau klik di luar area
   window.addEventListener('click', (e) => {
     if (e.target === modalOverlay) {
       modalOverlay.classList.remove('active');
     }
   });
+
+  // 0. MATIKAN PRELOADER
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('hide');
+    }, 1000);
+  }
 });
