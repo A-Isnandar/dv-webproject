@@ -1,153 +1,177 @@
 @media (max-width: 768px) {
+  /* --- HERO ADJUSTMENTS --- */
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.11rem;
+    line-height: 1.2;
   }
+  .hero-subtitle {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  /* --- NAVBAR & MENU MOBILE --- */
   .hamburger {
     display: block;
+    color: var(--text-inverse); /* Putih saat di hero */
   }
+
+  /* Warna hamburger jadi coklat saat menu terbuka atau discroll */
+  nav.mobile-open .hamburger,
+  nav.scrolled .hamburger {
+    color: var(--secondary);
+  }
+
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 70px;
+    top: 70px; /* Disesuaikan dengan tinggi navbar */
     flex-direction: column;
-    background-color: var(--primary-dark);
+    /* FIX: Ganti var(--primary-dark) jadi warna background baru */
+    background-color: var(--bg-main);
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 70px); /* Full height minus navbar */
     text-align: center;
     transition: 0.3s;
     padding-top: 40px;
+    border-top: 1px solid var(--primary); /* Garis pemisah tipis */
+    overflow-y: auto; /* Biar bisa discroll kalau menunya panjang */
   }
+
   .nav-menu.active {
     left: 0;
   }
-  .dropdown-content {
-    position: static;
-    background: #222;
-    box-shadow: none;
-  }
-  .dropdown-content a {
-    color: #ccc;
+
+  .nav-link {
+    color: var(--text-main); /* Pastikan teks menu coklat */
+    font-size: 1.1rem; /* Besarin dikit biar enak dipencet */
+    display: block;
+    margin: 15px 0;
   }
 
+  /* Dropdown di Mobile */
+  .dropdown-content {
+    position: static;
+    background: transparent; /* Gak perlu kotak putih lagi */
+    box-shadow: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-left: none;
+  }
+
+  .dropdown-content a {
+    color: var(--text-muted); /* Warna beda dikit buat sub-menu */
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+
+  .dropdown-content a:hover {
+    background: transparent;
+    color: var(--primary-text);
+  }
+
+  /* --- LAYOUT ADJUSTMENTS --- */
   .about-layout,
   .grid-2-2,
   .policy-grid {
     grid-template-columns: 1fr;
   }
+
   .menu-buttons .btn {
     margin-bottom: 10px;
+    width: 100%; /* Tombol full width di HP */
   }
-  /* HIGHLIGHTS MOBILE */
+
+  /* --- HIGHLIGHTS MOBILE --- */
   .big-text {
-    font-size: 1.43rem; /* Kecilin teks judul */
-    gap: 10px;
+    font-size: 1.8rem;
+    gap: 5px;
+    flex-direction: column; /* Stack ke bawah */
   }
 
   .sub-text {
-    font-size: 0.9rem; /* Kecilin teks sub */
+    font-size: 0.9rem;
   }
 
   .divider {
-    width: 20px; /* Pendekin garis */
+    width: 30px;
+    margin: 10px 0;
+    display: none; /* Sembunyikan garis di judul mobile biar rapi */
   }
 
   .vibe-grid {
-    grid-template-columns: 1fr; /* Jadi 1 kolom doang */
-    grid-template-rows: auto; /* Tinggi otomatis */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     gap: 15px;
   }
 
-  /* Reset posisi grid biar numpuk normal */
+  .vibe-item.active .vibe-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.9s;
+  }
+
   .item-large,
   .item-small,
   .item-tall {
     grid-column: auto;
     grid-row: auto;
-    height: 300px; /* Paksa tinggi seragam di HP biar rapi */
+    height: 250px;
   }
-}
-/* FIX KHUSUS BACKGROUND IMAGE DI IPHONE/MOBILE */
-@media (max-width: 1024px) {
-  /* Target Hero Section & Reservation Section */
-  .hero,
-  .parallax-bg {
-    /* Ubah dari fixed jadi scroll */
-    background-attachment: scroll !important;
 
-    /* Pastikan posisi dan ukuran tetap rapi */
-    background-position: center center !important;
-    background-size: cover !important;
-  }
-}
-/* --- MOBILE OPTIMIZATION (Put at the bottom of responsive.css) --- */
-
-@media (max-width: 768px) {
-  /* 1. KECILKAN FONT ROOT */
-  /* Ini trik jitu: Mengecilkan base font size akan otomatis 
-     mengecilkan semua elemen yang pakai satuan 'rem' */
+  /* --- GENERAL --- */
   html {
-    font-size: 14px; /* Default desktop biasanya 16px */
+    font-size: 14px;
   }
 
-  /* 2. RAPATKAN JARAK ANTAR SECTION */
   .section {
-    padding: 60px 0; /* Desktop 100px -> Mobile 60px */
+    padding: 60px 0;
   }
 
-  .section-header {
-    margin-bottom: 40px; /* Kurangi jarak judul ke konten */
-  }
-
-  /* 3. HERO SECTION (Biar gak makan layar) */
-  .hero-title {
-    font-size: 2.8rem; /* Desktop 4rem -> Turunin drastis */
-    line-height: 1.2;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-    letter-spacing: 1px; /* Kurangi spacing biar gak pecah baris */
-  }
-
-  /* 4. JUDUL SECTION (Signature Selection, etc) */
   .section-header h2 {
-    font-size: 2rem; /* Desktop 2.5rem */
+    font-size: 2rem;
   }
 
-  .eyebrow {
-    font-size: 1.05rem; /* Biar gak balapan sama judul utama */
-  }
-
-  /* 5. FOOTER (Ini yang lu bilang kegedean) */
+  /* Footer Adjustment */
   .footer {
-    padding: 40px 0 20px; /* Pangkas padding atas-bawah setengahnya */
+    padding: 50px 0 30px;
+    text-align: left; /* Reset text align jadi kiri biar rapi */
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr; /* Stack jadi 1 kolom */
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column-reverse; /* Copyright di bawah links */
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    width: 100%;
   }
 
   .footer-brand h2 {
-    font-size: 1.8rem; /* Kecilin logo text */
+    font-size: 1.8rem;
   }
 
-  .footer-brand p {
-    font-size: 0.8rem;
-    margin-bottom: 20px; /* Rapatkan jarak ke kontak */
-  }
-
-  .footer-social {
-    margin: 20px 0; /* Rapatkan jarak icon sosmed */
-  }
-
-  .footer-contact .map-link {
-    font-size: 0.9rem; /* Kecilin teks alamat */
-  }
-
-  /* 6. MODAL POPUP (Biar gak menuhi layar HP) */
+  /* Modal Adjustment */
   .modal-content {
-    width: 95%; /* Lebarkan dikit biar muat konten */
-    padding: 20px; /* Kurangi padding dalam */
-    max-height: 70vh; /* Batasi tinggi maksimal */
+    width: 95%;
+    padding: 20px;
+    max-height: 85vh;
   }
+}
 
-  .modal-content h2 {
-    font-size: 1.5rem; /* Kecilin judul modal */
+/* FIX BACKGROUND IMAGE IPHONE */
+@media (max-width: 1024px) {
+  .hero,
+  .parallax-bg {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover !important;
   }
 }

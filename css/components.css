@@ -2,39 +2,48 @@
 .btn {
   display: inline-block;
   padding: 12px 30px;
-  border-radius: 50px;
-  font-weight: 500;
+  border-radius: 4px; /* Ubah jadi sedikit kotak (Organic style) */
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.8rem;
   cursor: pointer;
   transition: var(--transition);
+  border: none;
 }
+
 .btn-primary {
-  background-color: var(--gold);
-  color: var(--primary-dark);
+  background-color: #fcba47; /* Kuning #f7ce86 */
+  color: var(--primary-text); /* Coklat #5b4824 */
 }
 .btn-primary:hover {
-  background-color: #fff;
+  background-color: #eac178; /* Sedikit lebih gelap saat hover */
   transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(91, 72, 36, 0.15);
 }
+
 .btn-outline {
-  border: 1px solid var(--primary-dark);
-  color: var(--primary-dark);
+  background: transparent;
+  border: 1px solid var(--secondary); /* Coklat tua */
+  color: var(--secondary);
   margin: 0 10px;
-  background: #ddba471d;
 }
 .btn-outline:hover {
-  background: var(--primary-dark);
-  color: var(--gold);
+  background: var(--secondary);
+  color: var(--secondary-text); /* Cream gelap #f9dea9 */
 }
+
 .btn-gold {
-  background-color: var(--gold);
-  color: #000;
+  background-color: var(
+    --secondary
+  ); /* Pakai Coklat Tua untuk tombol "Special" */
+  color: #fcba47;
   font-weight: bold;
   padding: 15px 40px;
 }
 .btn-gold:hover {
+  background-color: var(--primary);
+  color: var(--primary-text);
   transform: scale(1.05);
 }
 
@@ -47,14 +56,14 @@
 }
 .tab-btn {
   background: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid var(--bg-muted); /* Border lebih soft */
   padding: 12px 30px;
-  border-radius: 50px;
+  border-radius: 30px;
   font-family: var(--font-body);
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #888;
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -64,11 +73,12 @@
 }
 .tab-btn.active,
 .tab-btn:hover {
-  background-color: var(--primary-dark);
-  color: var(--gold);
-  border-color: var(--primary-dark);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary);
+  color: var(--secondary-text);
+  border-color: var(--secondary);
+  box-shadow: 0 5px 15px rgba(91, 72, 36, 0.1);
 }
+
 .menu-content {
   display: none;
   animation: fadeIn 0.5s ease-in-out;
@@ -96,7 +106,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(91, 72, 36, 0.85); /* Coklat tua transparan */
   backdrop-filter: blur(5px);
   align-items: center;
   justify-content: center;
@@ -108,14 +118,15 @@
   opacity: 1;
 }
 .modal-content {
-  background-color: #fff;
+  background-color: var(--bg-card); /* Cream terang #fefbf0 */
+  color: var(--text-main);
   width: 90%;
   max-width: 500px;
   padding: 30px;
   border-radius: 8px;
   position: relative;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   transform: translateY(50px);
   transition: transform 0.3s ease;
   max-height: 80vh;
@@ -126,10 +137,10 @@
 }
 .modal-content h2 {
   font-family: var(--font-heading);
-  color: var(--primary-dark);
+  color: var(--secondary);
   margin-bottom: 15px;
   font-size: 1.8rem;
-  border-bottom: 2px solid var(--gold);
+  border-bottom: 2px solid var(--primary);
   display: inline-block;
   padding-bottom: 10px;
 }
@@ -138,13 +149,13 @@
   top: 15px;
   right: 20px;
   font-size: 30px;
-  color: #aaa;
+  color: var(--text-muted);
   cursor: pointer;
   transition: 0.3s;
   line-height: 1;
 }
 .close-modal:hover {
-  color: var(--gold);
+  color: var(--secondary);
 }
 
 /* Policy Grid & Items (Dalam Modal) */
@@ -160,24 +171,24 @@
   align-items: flex-start;
   gap: 15px;
   padding: 15px;
-  background-color: #f9f9f9;
+  background-color: #ffffff; /* Putih bersih biar kontras di atas cream */
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid transparent;
+  border: 1px solid var(--bg-muted);
   height: auto;
 }
 .policy-item:hover {
   transform: translateY(-3px);
   background-color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border-color: var(--gold);
+  box-shadow: 0 5px 15px rgba(91, 72, 36, 0.05);
+  border-color: var(--primary);
 }
 .policy-icon {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  background-color: rgba(212, 175, 55, 0.1);
-  color: var(--gold);
+  background-color: var(--bg-muted); /* Beige */
+  color: var(--secondary);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -189,12 +200,12 @@
   font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 4px;
-  color: var(--primary-dark);
+  color: var(--secondary);
 }
 .policy-text p,
 .policy-text li {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-main);
   line-height: 1.4;
 }
 .policy-text ul {
@@ -205,10 +216,10 @@
 
 /* Event Teaser */
 .event-teaser {
-  background: linear-gradient(135deg, #fff 0%, #fcfbf5 100%);
+  background: var(--bg-card);
   padding: 20px;
   border-radius: 12px;
-  border: 1px solid #eee;
+  border: 1px solid var(--bg-muted);
 }
 .event-highlight {
   display: flex;
@@ -216,10 +227,13 @@
   gap: 15px;
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px dashed #ddd;
+  border-bottom: 1px dashed var(--text-muted);
 }
 .event-highlight:last-child {
   border-bottom: none;
+}
+.event-highlight h4 {
+  color: var(--secondary) !important;
 }
 
 /* Animations */
@@ -238,6 +252,7 @@
 .delay-2 {
   transition-delay: 0.4s;
 }
+
 /* --- PRELOADER STYLES --- */
 #preloader {
   position: fixed;
@@ -245,15 +260,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--primary-dark);
-  z-index: 9999; /* Paling atas */
+  background-color: var(--secondary); /* Background Loading jadi Coklat Tua */
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Kalau sudah selesai loading, kasih class ini via JS */
 #preloader.hide {
   opacity: 0;
   visibility: hidden;
@@ -265,53 +279,47 @@
 
 .loader-logo {
   font-family: var(--font-heading);
-  color: var(--text-light);
+  color: #ffffff; /* Cream Gelap */
   font-size: 3rem;
   margin-bottom: 15px;
   animation: pulse 2s infinite;
 }
 
 .loader-logo span {
-  color: var(--gold);
+  color: var(--primary); /* Kuning Emas */
 }
-
-/* ... style .loader-logo sebelumnya ... */
 
 .loader-subtitle {
-  font-family: var(--font-body); /* Pakai font sans-serif biar modern */
-  font-size: 0.8rem; /* Ukuran kecil */
-  letter-spacing: 5px; /* Spasi huruf lebar (Ciri khas Luxury) */
-  color: var(--text-light); /* Warna putih */
-  margin-top: -10px; /* Tarik ke atas dikit biar nempel logo */
-  margin-bottom: 20px; /* Jarak ke garis loading */
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+  color: #ffffff;
+  margin-top: -10px;
+  margin-bottom: 20px;
   text-transform: uppercase;
-  animation: fadeInUp 1s ease-out forwards; /* Animasi muncul perlahan */
-  opacity: 0; /* Mulai dari transparan */
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
 }
 
-/* Animasi Muncul dari Bawah (Fade In Up) */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(10px);
   }
   100% {
-    opacity: 0.8; /* Gak perlu 100% biar agak soft */
+    opacity: 0.8;
     transform: translateY(0);
   }
 }
 
-/* ... style .loader-line selanjutnya ... */
-
 .loader-line {
   width: 0;
   height: 2px;
-  background-color: var(--gold);
+  background-color: var(--primary);
   margin: 0 auto;
   animation: loadLine 1.5s ease-in-out forwards;
 }
 
-/* Animasi Denyut */
 @keyframes pulse {
   0% {
     opacity: 0.5;
@@ -327,7 +335,6 @@
   }
 }
 
-/* Animasi Garis Loading */
 @keyframes loadLine {
   0% {
     width: 0;

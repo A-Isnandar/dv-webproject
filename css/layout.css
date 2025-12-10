@@ -8,29 +8,25 @@
   padding: 0 20px;
 }
 
-/* Navbar */
+/* --- NAVBAR --- */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  padding: 20px 0;
+  padding: 25px 0;
   transition: var(--transition);
-}
-/* ... kode nav.scrolled yang lama ... */
-nav.scrolled {
-  background: rgba(26, 26, 26, 0.95);
-  padding: 15px 0;
-  backdrop-filter: blur(10px);
+  background: transparent; /* Awal transparan */
 }
 
-/* [TAMBAHAN BARU] 
-   Memaksa navbar jadi gelap saat menu mobile dibuka, 
-   meskipun belum discroll */
+/* Saat di-scroll atau Mobile Menu dibuka */
+nav.scrolled,
 nav.mobile-open {
-  background-color: var(--primary-dark);
-  padding: 20px 0; /* Pertahankan padding biar gak loncat */
+  background: var(--bg-main); /* Warna Cream #fffbef */
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(95, 71, 29, 0.05); /* Shadow halus coklat */
 }
+
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -39,33 +35,46 @@ nav.mobile-open {
   align-items: center;
   padding: 0 20px;
 }
+
+/* Logo Styling */
 .logo {
   font-family: var(--font-heading);
   font-size: 1.8rem;
-  color: var(--text-light);
+  color: var(--secondary); /* Warna Coklat Gelap */
   font-weight: 700;
 }
 .logo span {
-  color: var(--gold);
+  color: var(--primary); /* Titik warna Kuning */
 }
+
+/* Nav Links Desktop */
 .nav-menu {
   display: flex;
   gap: 30px;
 }
 .nav-link {
-  color: var(--text-light);
+  color: var(--text-main); /* Coklat */
   font-size: 0.95rem;
   font-weight: 500;
   position: relative;
 }
+
+/* Warna link saat di Hero (sebelum scroll) agar terbaca di gambar gelap */
+/* Hapus block ini kalau gambar background lu terang */
+nav:not(.scrolled):not(.mobile-open) .nav-link,
+nav:not(.scrolled):not(.mobile-open) .logo {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .nav-link::after {
   content: '';
   position: absolute;
   width: 0;
-  height: 1px;
+  height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: var(--gold);
+  background-color: var(--primary);
   transition: var(--transition);
 }
 .nav-link:hover::after {
@@ -81,21 +90,22 @@ nav.mobile-open {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
+  background-color: var(--bg-main);
   min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(95, 71, 29, 0.1);
   border-radius: 4px;
   overflow: hidden;
   padding: 10px 0;
 }
 .dropdown-content a {
-  color: var(--text-dark);
+  color: var(--text-main);
   padding: 10px 20px;
   display: block;
   font-size: 0.9rem;
 }
 .dropdown-content a:hover {
-  background-color: var(--sand);
+  background-color: var(--bg-muted);
+  color: var(--secondary);
 }
 .dropdown:hover .dropdown-content {
   display: block;
@@ -104,65 +114,134 @@ nav.mobile-open {
 /* Hamburger */
 .hamburger {
   display: none;
-  color: var(--text-light);
+  color: var(--text-main);
   font-size: 1.5rem;
   cursor: pointer;
 }
-
-/* Footer */
-.footer {
-  background-color: var(--primary-dark);
-  color: var(--text-light);
-  padding: 80px 0 30px;
-  text-align: center;
+/* Paksa hamburger putih kalau belum scroll */
+nav:not(.scrolled):not(.mobile-open) .hamburger {
+  color: #fff;
 }
-.footer-brand h2 {
-  color: var(--text-light);
+
+/* --- FOOTER (Light Boho Style) --- */
+.footer {
+  background-color: var(--bg-main); /* Cream, nyatu sama body */
+  color: var(--text-main); /* Teks Coklat */
+  padding: 80px 0 30px;
+  border-top: 1px solid rgba(95, 71, 29, 0.1); /* Garis pemisah halus */
+}
+
+/* Grid Layout 4 Kolom */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr; /* Kolom brand & reserve agak lebar */
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Typography Footer */
+.footer-logo {
+  font-family: var(--font-heading); /* Lora */
   font-size: 2rem;
   margin-bottom: 5px;
+  color: var(--text-main);
+  line-height: 1;
 }
-.footer-brand p {
-  color: var(--gold);
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-}
-.footer-contact p {
-  color: #999;
-  margin-bottom: 5px;
-}
-.footer-contact .map-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: #999;
-  font-size: 1rem;
+
+.footer-sub {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
   margin-bottom: 20px;
-  transition: all 0.3s ease;
 }
-.footer-contact .map-link i {
-  color: #d4af37;
+
+.footer-desc {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.footer-col h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  color: var(--text-main);
+}
+
+/* List Icon (Location & Hours) */
+.icon-list {
+  list-style: none;
+  padding: 0;
+}
+
+.icon-list li {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  align-items: flex-start;
+}
+
+.icon-list i {
+  color: var(--text-muted); /* Icon warna Emas/Coklat Muda */
+  font-size: 1.1rem;
+  margin-top: 4px; /* Biar sejajar sama teks baris pertama */
+}
+
+.icon-list strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.icon-list .time {
+  color: var(--text-muted);
+}
+
+/* Social Icons */
+.footer-social {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.footer-social a {
+  color: var(--text-main);
   font-size: 1.2rem;
+  transition: var(--transition);
 }
-.footer-contact .map-link:hover {
-  color: #fff;
+
+.footer-social a:hover {
+  color: var(--primary); /* Hover jadi kuning */
   transform: translateY(-3px);
 }
-.footer-social {
-  margin: 30px 0;
-}
-.footer-social a {
-  color: #fff;
-  margin: 0 15px;
-  font-size: 1.2rem;
-}
-.footer-social a:hover {
-  color: var(--gold);
-}
+
+/* Bottom Bar */
 .footer-bottom {
-  border-top: 1px solid #333;
-  padding-top: 20px;
-  font-size: 0.8rem;
-  color: #555;
+  border-top: 1px solid rgba(95, 71, 29, 0.1);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
 }
