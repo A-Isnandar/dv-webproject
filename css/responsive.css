@@ -5,7 +5,6 @@
   .hamburger {
     display: block;
   }
-
   .nav-menu {
     position: fixed;
     left: -100%;
@@ -37,6 +36,34 @@
   }
   .menu-buttons .btn {
     margin-bottom: 10px;
+  }
+  /* HIGHLIGHTS MOBILE */
+  .big-text {
+    font-size: 1.43rem; /* Kecilin teks judul */
+    gap: 10px;
+  }
+
+  .sub-text {
+    font-size: 0.9rem; /* Kecilin teks sub */
+  }
+
+  .divider {
+    width: 20px; /* Pendekin garis */
+  }
+
+  .vibe-grid {
+    grid-template-columns: 1fr; /* Jadi 1 kolom doang */
+    grid-template-rows: auto; /* Tinggi otomatis */
+    gap: 15px;
+  }
+
+  /* Reset posisi grid biar numpuk normal */
+  .item-large,
+  .item-small,
+  .item-tall {
+    grid-column: auto;
+    grid-row: auto;
+    height: 300px; /* Paksa tinggi seragam di HP biar rapi */
   }
 }
 /* FIX KHUSUS BACKGROUND IMAGE DI IPHONE/MOBILE */
