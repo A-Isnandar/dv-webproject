@@ -1,7 +1,7 @@
 @media (max-width: 768px) {
-  /* --- HERO ADJUSTMENTS --- */
+  /* 1. HERO ADJUSTMENTS */
   .hero-title {
-    font-size: 2.11rem;
+    font-size: 2.29rem; /* Ukuran pas buat mobile */
     line-height: 1.2;
   }
   .hero-subtitle {
@@ -12,7 +12,7 @@
   /* --- NAVBAR & MENU MOBILE --- */
   .hamburger {
     display: block;
-    color: var(--text-inverse); /* Putih saat di hero */
+    color: var(--text-inverse);
   }
 
   /* Warna hamburger jadi coklat saat menu terbuka atau discroll */
@@ -21,20 +21,37 @@
     color: var(--secondary);
   }
 
+  /* 1. ATUR TINGGI NAVBAR BIAR GAK BOLONG */
+  /* Logo 19px + Padding (25.5px x 2) = 70px Total */
+  nav.mobile-open {
+    padding: 25.5px 0 !important;
+    background-color: var(--bg-main);
+  }
+
+  /* 2. PAKSA LOGO JADI 19px SAAT MENU DIBUKA */
+  nav.mobile-open .logo-img {
+    height: 19px !important; /* Timpa 40px yang lama */
+    width: auto;
+    /* Filter warna Coklat (#5b4824) */
+    filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(1472%)
+      hue-rotate(348deg) brightness(95%) contrast(89%);
+  }
+
+  /* 3. POSISI MENU DRAWER (Tetap di 70px) */
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 70px; /* Disesuaikan dengan tinggi navbar */
+    top: 70px; /* Sesuai total tinggi navbar */
     flex-direction: column;
-    /* FIX: Ganti var(--primary-dark) jadi warna background baru */
     background-color: var(--bg-main);
     width: 100%;
-    height: calc(100vh - 70px); /* Full height minus navbar */
+    height: calc(100vh - 70px);
     text-align: center;
     transition: 0.3s;
     padding-top: 40px;
-    border-top: 1px solid var(--primary); /* Garis pemisah tipis */
-    overflow-y: auto; /* Biar bisa discroll kalau menunya panjang */
+    border-top: 1px solid var(--primary);
+    overflow-y: auto;
+    z-index: 999;
   }
 
   .nav-menu.active {
@@ -42,8 +59,8 @@
   }
 
   .nav-link {
-    color: var(--text-main); /* Pastikan teks menu coklat */
-    font-size: 1.1rem; /* Besarin dikit biar enak dipencet */
+    color: var(--text-main);
+    font-size: 1.09rem;
     display: block;
     margin: 15px 0;
   }
@@ -51,7 +68,7 @@
   /* Dropdown di Mobile */
   .dropdown-content {
     position: static;
-    background: transparent; /* Gak perlu kotak putih lagi */
+    background: transparent;
     box-shadow: none;
     padding: 0;
     margin-top: 10px;
@@ -60,7 +77,7 @@
   }
 
   .dropdown-content a {
-    color: var(--text-muted); /* Warna beda dikit buat sub-menu */
+    color: var(--text-muted);
     font-size: 1rem;
     padding: 10px 0;
   }
@@ -70,7 +87,7 @@
     color: var(--primary-text);
   }
 
-  /* --- LAYOUT ADJUSTMENTS --- */
+  /* 4. CONTENT LAYOUTS */
   .about-layout,
   .grid-2-2,
   .policy-grid {
@@ -79,14 +96,14 @@
 
   .menu-buttons .btn {
     margin-bottom: 10px;
-    width: 100%; /* Tombol full width di HP */
+    width: 100%;
   }
 
-  /* --- HIGHLIGHTS MOBILE --- */
+  /* 5. HIGHLIGHTS SECTION */
   .big-text {
     font-size: 1.8rem;
     gap: 5px;
-    flex-direction: column; /* Stack ke bawah */
+    flex-direction: column;
   }
 
   .sub-text {
@@ -94,9 +111,7 @@
   }
 
   .divider {
-    width: 30px;
-    margin: 10px 0;
-    display: none; /* Sembunyikan garis di judul mobile biar rapi */
+    display: none;
   }
 
   .vibe-grid {
@@ -105,10 +120,11 @@
     gap: 15px;
   }
 
+  /* Auto Reveal Text saat Scroll */
   .vibe-item.active .vibe-overlay {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.9s;
+    transition-delay: 0.5s;
   }
 
   .item-large,
@@ -119,7 +135,7 @@
     height: 250px;
   }
 
-  /* --- GENERAL --- */
+  /* 6. GENERAL SPACING */
   html {
     font-size: 14px;
   }
@@ -132,19 +148,35 @@
     font-size: 2rem;
   }
 
-  /* Footer Adjustment */
+  /* 7. FOOTER ADJUSTMENT */
   .footer {
     padding: 50px 0 30px;
-    text-align: left; /* Reset text align jadi kiri biar rapi */
+    text-align: left;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr; /* Stack jadi 1 kolom */
+    grid-template-columns: 1fr;
     gap: 40px;
   }
 
+  .footer-brand h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Footer Logo Size Mobile */
+  .logo-img {
+    height: 19px;
+    width: auto;
+    margin-bottom: 15px;
+  }
+  .footer-logo-img {
+    height: 19px; /* Jangan 19px kekecilan bro */
+    width: auto;
+    margin-bottom: 1px;
+  }
+
   .footer-bottom {
-    flex-direction: column-reverse; /* Copyright di bawah links */
+    flex-direction: column-reverse;
     gap: 20px;
     text-align: center;
   }
@@ -154,11 +186,7 @@
     width: 100%;
   }
 
-  .footer-brand h2 {
-    font-size: 1.8rem;
-  }
-
-  /* Modal Adjustment */
+  /* 8. MODAL */
   .modal-content {
     width: 95%;
     padding: 20px;

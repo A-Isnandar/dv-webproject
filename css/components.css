@@ -277,17 +277,27 @@
   text-align: center;
 }
 
-.loader-logo {
-  font-family: var(--font-heading);
-  color: #ffffff; /* Cream Gelap */
-  font-size: 3rem;
+/* PRELOADER LOGO */
+.loader-logo-img {
+  width: 409px;   /* Ukuran default Desktop */
+  max-width: 50%; /* Batasi lebar di HP biar gak kegedean */
+  height: auto;
   margin-bottom: 15px;
   animation: pulse 2s infinite;
+  
+  /* Karena background Loader lu Coklat (#5b4824), 
+     Logo PUTIH asli lu bakal kelihatan jelas. Jadi filter: none aja. */
+  filter: none;
 }
 
-.loader-logo span {
-  color: var(--primary); /* Kuning Emas */
+/* Optional: Atur ukuran khusus HP kalau masih kegedean */
+@media (max-width: 768px) {
+  .loader-logo-img {
+    width: 400px; /* Ukuran Mobile */
+  }
 }
+
+/* Hapus style .loader-logo text yang lama biar gak dobel */
 
 .loader-subtitle {
   font-family: var(--font-body);

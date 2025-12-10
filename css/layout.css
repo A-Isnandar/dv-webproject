@@ -37,14 +37,34 @@ nav.mobile-open {
 }
 
 /* Logo Styling */
-.logo {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  color: var(--secondary); /* Warna Coklat Gelap */
-  font-weight: 700;
+/* Hapus style .logo yang lama (font-family, font-size, dll) */
+
+/* --- LOGO IMAGE STYLING --- */
+
+/* 1. Kondisi Awal (Hero) - Logo Putih */
+.logo-img {
+  height: 25px;
+  width: auto;
+  transition: var(--transition);
+  filter: none; /* Logo asli putih */
+  vertical-align: middle; /* [PENTING] Biar gak ada gap hantu di bawah gambar */
 }
-.logo span {
-  color: var(--primary); /* Titik warna Kuning */
+
+/* 2. Kondisi Scrolled & Mobile Menu - Ubah Putih ke Coklat #5b4824 */
+nav.scrolled .logo-img,
+nav.mobile-open .logo-img {
+  /* Filter Baru: Akurasi 99.9% ke #5b4824 */
+  filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(1472%)
+    hue-rotate(11deg) brightness(95%) contrast(89%);
+}
+
+/* 3. Footer Logo - Ubah Putih ke Coklat #5b4824 */
+.footer-logo-img {
+  height: 25px;
+  width: auto;
+  margin-bottom: 15px;
+  filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(1472%)
+    hue-rotate(11deg) brightness(95%) contrast(89%);
 }
 
 /* Nav Links Desktop */
