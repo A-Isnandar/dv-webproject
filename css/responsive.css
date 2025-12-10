@@ -1,7 +1,7 @@
 @media (max-width: 768px) {
   /* 1. HERO ADJUSTMENTS */
   .hero-title {
-    font-size: 2.29rem; /* Ukuran pas buat mobile */
+    font-size: 2.23rem; /* Ukuran pas buat mobile */
     line-height: 1.2;
   }
   .hero-subtitle {
