@@ -34,7 +34,7 @@
     width: auto;
     /* Filter warna Coklat (#5b4824) */
     filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(1472%)
-      hue-rotate(348deg) brightness(95%) contrast(89%);
+      hue-rotate(7deg) brightness(95%) contrast(89%);
   }
 
   /* 3. POSISI MENU DRAWER (Tetap di 70px) */
@@ -74,6 +74,34 @@
     margin-top: 10px;
     margin-bottom: 20px;
     border-left: none;
+
+    /* [PENTING] Sembunyikan default-nya, dan matikan efek hover desktop */
+    display: none;
+  }
+
+  /* 1. Matikan efek hover bawaan desktop biar gak bentrok */
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  /* 2. Hanya munculkan kalau ada class .active (dari Javascript) */
+  .dropdown.active .dropdown-content {
+    display: block !important;
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* --- ANIMASI ICON CHEVRON (PANAH BAWAH) --- */
+  
+  /* 1. Set transisi biar muternya mulus */
+  .dropdown .fa-chevron-down {
+    transition: transform 0.3s ease;
+    display: inline-block; /* Penting biar bisa diputar */
+    margin-left: 5px; /* Jarak dikit dari teks "More" */
+  }
+
+  /* 2. Putar 180 derajat saat class .active nyala (Menu Terbuka) */
+  .dropdown.active .fa-chevron-down {
+    transform: rotate(180deg);
   }
 
   .dropdown-content a {

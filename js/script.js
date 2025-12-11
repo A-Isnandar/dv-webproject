@@ -1,4 +1,4 @@
-/* LOGIC UTAMA WEBSITE (UPDATED FIX MOBILE MENU) */
+/* LOGIC UTAMA WEBSITE (UPDATED FIX MOBILE DROPDOWN) */
 
 document.addEventListener('componentsLoaded', () => {
   console.log('Website Ready! Menjalankan Logic...');
@@ -9,8 +9,6 @@ document.addEventListener('componentsLoaded', () => {
   const navbar = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
-
-  // [UPDATE] Ganti selector biar kena semua link termasuk dropdown
   const allMenuLinks = document.querySelectorAll('.nav-menu a');
 
   // Scroll Effect
@@ -26,7 +24,7 @@ document.addEventListener('componentsLoaded', () => {
   if (hamburger) {
     hamburger.addEventListener('click', () => {
       navMenu.classList.toggle('active');
-      navbar.classList.toggle('mobile-open'); // Toggle background gelap
+      navbar.classList.toggle('mobile-open');
 
       const icon = hamburger.querySelector('i');
       if (navMenu.classList.contains('active')) {
@@ -39,10 +37,39 @@ document.addEventListener('componentsLoaded', () => {
     });
   }
 
-  // [UPDATE] Logic Tutup Menu untuk SEMUA Link (Termasuk Dropdown)
+  // ==========================================
+  // [BARU] LOGIC DROPDOWN MOBILE (FIX BUG ANDROID)
+  // ==========================================
+  const dropdownParent = document.querySelector('.dropdown');
+  const dropdownLink = document.querySelector('.dropdown > a');
+
+  if (dropdownLink && dropdownParent) {
+    dropdownLink.addEventListener('click', (e) => {
+      // Hanya jalankan logic ini di mode mobile (layar kecil)
+      if (window.innerWidth <= 768) {
+        e.preventDefault(); // 1. TAHAN: Jangan pindah ke #more
+        e.stopPropagation(); // 2. TAHAN: Jangan biarkan event naik ke "Tutup Menu"
+
+        dropdownParent.classList.toggle('active'); // 3. AKSI: Cukup buka/tutup sub-menu
+      }
+    });
+  }
+
+  // ==========================================
+  // LOGIC TUTUP MENU (UPDATED)
+  // ==========================================
   allMenuLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      // Tutup Menu
+      // PENTING: Kalau yang diklik adalah link "More" (Dropdown Parent) di HP,
+      // JANGAN jalankan fungsi tutup menu ini. Biarkan logic di atas yang handle.
+      if (
+        window.innerWidth <= 768 &&
+        link.parentElement.classList.contains('dropdown')
+      ) {
+        return;
+      }
+
+      // Selain itu (misal link Home, Menu, atau Sub-menu Events), BARU tutup menu
       if (navMenu) navMenu.classList.remove('active');
       if (navbar) navbar.classList.remove('mobile-open');
 

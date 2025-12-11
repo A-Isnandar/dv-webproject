@@ -94,7 +94,7 @@ nav:not(.scrolled):not(.mobile-open) .logo {
   height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: var(--primary);
+  background-color: #fffbef;
   transition: var(--transition);
 }
 .nav-link:hover::after {
