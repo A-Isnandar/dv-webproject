@@ -13,7 +13,7 @@
 }
 
 .btn-primary {
-  background-color: #ffaa0f; /* Kuning #f7ce86 */
+  background-color: #fcba47; /* Kuning #f7ce86 */
   color: var(--primary-text); /* Coklat #5b4824 */
 }
 .btn-primary:hover {
@@ -279,12 +279,12 @@
 
 /* PRELOADER LOGO */
 .loader-logo-img {
-  width: 409px;   /* Ukuran default Desktop */
+  width: 409px; /* Ukuran default Desktop */
   max-width: 50%; /* Batasi lebar di HP biar gak kegedean */
   height: auto;
   margin-bottom: 15px;
   animation: pulse 2s infinite;
-  
+
   /* Karena background Loader lu Coklat (#5b4824), 
      Logo PUTIH asli lu bakal kelihatan jelas. Jadi filter: none aja. */
   filter: none;
